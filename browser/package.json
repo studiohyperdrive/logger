@@ -1,0 +1,28 @@
+{
+  "name": "@studiohyperdrive/browser-logger",
+  "version": "0.0.3",
+  "description": "SHD logging module: an abstraction on console.log for frontend.",
+  "scripts": {
+    "start": "npm i && npm run build",
+    "lint": "eslint .",
+    "test": "echo 'No testing specified'",
+    "prebuild": "npm run lint && npm run test",
+    "build": "rollup -c -m",
+    "demo": "(cd demo && npm start)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/district01/shd-logger.git"
+  },
+  "author": "Niels Bril <niels.bril@studiohyperdrive.be>",
+  "contributors": [
+    "Niels Bril <niels.bril@studiohyperdrive.be>"
+  ],
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/district01/shd-logger#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "rollup": "^0.66.6"
+  }
+}
