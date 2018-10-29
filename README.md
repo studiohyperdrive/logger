@@ -18,6 +18,8 @@
 
 ## Installation ##
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/studiohyperdrive/logger.svg)](https://greenkeeper.io/)
+
 Install through npm:
 
 ```shell
