@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/district01/shd-logger.git"
+    "url": "ssh://git@github.com:studiohyperdrive/logger.git"
   },
   "author": "Niels Bril <niels.bril@studiohyperdrive.be>",
   "contributors": [
     "Niels Bril <niels.bril@studiohyperdrive.be>"
   ],
   "license": "ISC",
-  "homepage": "https://bitbucket.org/district01/shd-logger#readme",
+  "homepage": "https://github.com/studiohyperdrive/logger",
   "dependencies": {
     "request": "2.88.0",
     "request-promise": "4.2.2",
