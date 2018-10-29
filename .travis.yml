@@ -5,10 +5,12 @@ node_js:
   - "10"
 script:
   - cd browser
+  - npm install
   - npm run lint
   - npm test
   - cd ..
   - cd nodejs
+  - npm install
   - npm run lint
   - npm test
   - cd ..
