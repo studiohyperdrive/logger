@@ -66,9 +66,9 @@ function getMessageAndData() {
 
 function print(type, message, data) {
 	if (data) {
-		console.log(`%c%s %c%s\n%o\n`, generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`, generateStyle(config.themes.black), message, data); // eslint-disable-line no-console
+		console[config.methods[type]](`%c%s %c%s\n%o\n`, generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`, generateStyle(config.themes.black), message, data); // eslint-disable-line no-console
 	} else {
-		console.log(`%c%s %c%s\n`, generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`, generateStyle(config.themes.black), message); // eslint-disable-line no-console
+		console[config.methods[type]](`%c%s %c%s\n`, generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`, generateStyle(config.themes.black), message); // eslint-disable-line no-console
 	}
 }
 

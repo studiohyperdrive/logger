@@ -1,8 +1,8 @@
-const logger = require("../../");
+const Logger = require("../../");
 
 module.exports = {
-	logger: new logger(),
-	productionLogger: new logger({
+	logger: new Logger(),
+	productionLogger: new Logger({
 		enabled: [
 			"error",
 		],

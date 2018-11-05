@@ -9,5 +9,6 @@ logger.success("some success message", { key: "value" });
 logger.warn("some warn message", { key: "value" });
 logger.error("some error message", { key: "value" });
 
-productionLogger.debug("some production debug message", new Error());
-productionLogger.error("some production error message", new Error());
+productionLogger.debug("some production debug message", new Error("something broke"));
+productionLogger.debug("some forced production debug message", new Error("something broke"), true);
+productionLogger.error("some production error message", new Error("something broke"));

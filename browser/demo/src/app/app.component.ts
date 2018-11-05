@@ -14,7 +14,8 @@ export class AppComponent implements OnInit {
 		logger.warn("some warning message ", { key: "value" });
 		logger.error("some error message", { key: "value" });
 
-		productionLogger.debug("some production debug message");
-		productionLogger.error("some production error message");
+		productionLogger.debug("some production debug message", new Error("something broke"));
+		productionLogger.debug("some forced production debug message", new Error("something broke"), true);
+		productionLogger.error("some production error message", new Error("something broke"));
 	}
 }

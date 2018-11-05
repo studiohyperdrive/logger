@@ -44,6 +44,9 @@ export class Logger {
 				obj = msg;
 				msg = "";
 			}
+			if (level === "error" && typeof obj === "string") {
+				obj = new Error(obj);
+			}
 
 			methods[level](msg, obj);
 		}
