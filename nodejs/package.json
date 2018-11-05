@@ -1,6 +1,6 @@
 {
   "name": "@studiohyperdrive/nodejs-logger",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "SHD logging module: an abstraction on console.log for backend (Node.js).",
   "scripts": {
     "start": "npm i && npm run build",

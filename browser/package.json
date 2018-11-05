@@ -1,6 +1,6 @@
 {
   "name": "@studiohyperdrive/browser-logger",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "SHD logging module: an abstraction on console.log for frontend.",
   "scripts": {
     "start": "npm i && npm run build",
