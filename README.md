@@ -40,21 +40,55 @@ Create an instance of the logger and export it for usage in your application:
 
 **logger.js**
 
-<div style="text-align:center"><img src ="./assets/browser-usage-1.png" style="max-width:800px"/></div>
+```js
+import { Logger } from "@studiohyperdrive/logger";
+
+export const logger = new Logger();
+```
 
 **app.js**
 
-<div style="text-align:center"><img src ="./assets/browser-usage-2.png" style="max-width:800px"/></div>
+```js
+import { logger } from "./logger";
+
+logger.debug("some debug message", { key: "value" });
+logger.info("some info message", { key: "value" });
+logger.success("some success message", { key: "value" });
+logger.warn("some warn message", { key: "value" });
+logger.error("some error message", { key: "value" });
+```
 
 **Output**
 
-<div style="text-align:center"><img src ="./assets/browser-usage-3.png" style="max-width:800px;border-radius:10px"/></div>
+<p align="center">
+    <img src ="./assets/browser-output.png" style="max-width:800px;border-radius:10px"/>
+</p>
+<br>
+
+### Overloads ###
+
+As documented in the [typings](./typings.ts), each method has several overloads:
+
+```js
+logger.info("some info message", { key: "value" }); // Message and object
+logger.info("some info message"); // Message
+logger.info({ key: "value" }); // Object
+logger.info("some info message", { key: "value" }, true); // Force the log, although the loglevel is not enabled
+```
 
 ### Configuration ###
 
 When creating an instance of the `Logger` class configuration can be provided by passing an options object to the constructor.
 
-<div style="text-align:center"><img src ="./assets/browser-configuration-1.png" style="max-width:800px"/></div>
+```js
+import { Logger } from "@studiohyperdrive/logger";
+
+export const logger = new Logger({
+    enabled: [
+        "error",
+    ],
+});
+```
 
 #### Default configuration ####
 
@@ -89,21 +123,71 @@ Create an instance of the logger and export it for usage in your application:
 
 **logger.js**
 
-<div style="text-align:center"><img src ="./assets/nodejs-usage-1.png" style="max-width:800px"/></div>
+```js
+const Logger = require("@studiohyperdrive/logger");
+
+const logger = new Logger();
+
+module.exports = logger;
+```
 
 **app.js**
 
-<div style="text-align:center"><img src ="./assets/nodejs-usage-2.png" style="max-width:800px"/></div>
+```js
+const logger = require("./logger");
+
+logger.debug("some debug message", { key: "value" });
+logger.info("some info message", { key: "value" });
+logger.cron("some cron message", { key: "value" });
+logger.db("some db message", { key: "value" });
+logger.success("some success message", { key: "value" });
+logger.warn("some warn message", { key: "value" });
+logger.error("some error message", { key: "value" });
+```
 
 **Output**
 
-<div style="text-align:center"><img src ="./assets/nodejs-usage-3.png" style="max-width:800px;border-radius:10px"/></div>
+<p align="center">
+    <img src ="./assets/nodejs-output.png" style="max-width:800px;border-radius:10px"/>
+</p>
+<br>
+
+### Overloads ###
+
+As documented in the [typings](./typings.ts), each method has several overloads:
+
+```js
+logger.info("some info message", { key: "value" }); // Message and object
+logger.info("some info message"); // Message
+logger.info({ key: "value" }); // Object
+logger.info("some info message", { key: "value" }, true); // Force the log, although the loglevel is not enabled
+```
 
 ### Configuration ###
 
 When creating an instance of the `Logger` class configuration can be provided by passing an options object to the constructor.
 
-<div style="text-align:center"><img src ="./assets/nodejs-configuration-1.png" style="max-width:800px"/></div>
+```js
+const Logger = require("@studiohyperdrive/logger");
+
+const logger = new Logger({
+    enabled: [
+        "error",
+    ],
+    filesystem: {
+        enabled: true,
+        path: "logs",
+    },
+    slack: {
+        enabled: true,
+        token: "token",
+        app: "my-app",
+        channel: "my-channel",
+    },
+});
+
+module.exports = logger;
+```
 
 #### Default configuration ####
 
@@ -169,4 +253,4 @@ Feel free to provide feedback, open issues or create pull-requests to this repos
 
 ## About us ##
 
-[Studio Hyperdrive](https://www.studiohyperdrive.be/) is an experienced digital development studio focussed on all things JavaScript. Already 18 strong. Based in Antwerp & Ghent! With a handpicked set of skills we build anything from websites to chatbots and immersive cross reality experiences.
+[Studio Hyperdrive](https://www.studiohyperdrive.be/) is an experienced digital development studio focussed on all things JavaScript. Already 18 strong. Based in Antwerp & Ghent! With a handpicked set of skills we build anything from websites to chatbots and immersive cross reality experiences. Feel free to contact us through our website.
