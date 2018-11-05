@@ -36,12 +36,16 @@ export class Logger {
 	 * @param {string} level
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	log(level, msg, obj) {
-		if (this.options.enabled.includes(level)) {
+	log(level, msg, obj, force) {
+		if (this.options.enabled.includes(level) || force) {
 			if (!obj && typeof msg === "object") {
 				obj = msg;
 				msg = "";
+			}
+			if (level === "error" && typeof obj === "string") {
+				obj = new Error(obj);
 			}
 
 			methods[level](msg, obj);
@@ -53,9 +57,10 @@ export class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	debug(msg, obj) {
-		this.log("debug", msg, obj);
+	debug(msg, obj, force) {
+		this.log("debug", msg, obj, force);
 	}
 
 	/**
@@ -63,9 +68,10 @@ export class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	info(msg, obj) {
-		this.log("info", msg, obj);
+	info(msg, obj, force) {
+		this.log("info", msg, obj, force);
 	}
 
 	/**
@@ -73,9 +79,10 @@ export class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	success(msg, obj) {
-		this.log("success", msg, obj);
+	success(msg, obj, force) {
+		this.log("success", msg, obj, force);
 	}
 
 	/**
@@ -83,9 +90,10 @@ export class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	warn(msg, obj) {
-		this.log("warn", msg, obj);
+	warn(msg, obj, force) {
+		this.log("warn", msg, obj, force);
 	}
 
 
@@ -94,8 +102,9 @@ export class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	error(msg, obj) {
-		this.log("error", msg, obj);
+	error(msg, obj, force) {
+		this.log("error", msg, obj, force);
 	}
 }

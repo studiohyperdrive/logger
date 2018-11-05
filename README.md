@@ -12,7 +12,29 @@
     <br>
     <sub>Supports browser console and Node.js, only 3kB, configurable and MIT licensed</sub>
 </p>
-<hr>
+
+---
+
+## Table of Contents ##
+
+* [Installation](#installation)
+* [Browser](#browser)
+  * [Usage](#usage)
+  * [Overloads](#overloads)
+  * [Configuration](#configuration)
+    * [Default configuration](#default-configuration)
+* [Node\.js](#nodejs)
+  * [Usage](#usage-1)
+  * [Overloads](#overloads-1)
+  * [Configuration](#configuration-1)
+    * [Default configuration](#default-configuration-1)
+  * [Slack](#slack)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [About us](#about-us)
+
+---
 
 **@studiohyperdrive/logger** is a logging library that supports both the browser and Node.js by exporting different bundles for both targets.
 
@@ -40,21 +62,54 @@ Create an instance of the logger and export it for usage in your application:
 
 **logger.js**
 
-<div style="text-align:center"><img src ="./assets/browser-usage-1.png" style="max-width:800px"/></div>
+```js
+import { Logger } from "@studiohyperdrive/logger";
+
+export const logger = new Logger();
+```
 
 **app.js**
 
-<div style="text-align:center"><img src ="./assets/browser-usage-2.png" style="max-width:800px"/></div>
+```js
+import { logger } from "./logger";
+
+logger.debug("some debug message", { key: "value" });
+logger.info("some info message", { key: "value" });
+logger.success("some success message", { key: "value" });
+logger.warn("some warn message", { key: "value" });
+logger.error("some error message", { key: "value" });
+```
 
 **Output**
 
-<div style="text-align:center"><img src ="./assets/browser-usage-3.png" style="max-width:800px;border-radius:10px"/></div>
+<p align="center">
+    <img src ="./assets/browser-output.png" style="max-width:800px;border-radius:10px"/>
+</p>
+
+### Overloads ###
+
+As documented in the [typings](./typings.ts), each method has several overloads:
+
+```js
+logger.info("some info message", { key: "value" }); // Message and object
+logger.info("some info message"); // Message
+logger.info({ key: "value" }); // Object
+logger.info("some info message", { key: "value" }, true); // Force a log when loglevel is disabled
+```
 
 ### Configuration ###
 
 When creating an instance of the `Logger` class configuration can be provided by passing an options object to the constructor.
 
-<div style="text-align:center"><img src ="./assets/browser-configuration-1.png" style="max-width:800px"/></div>
+```js
+import { Logger } from "@studiohyperdrive/logger";
+
+export const logger = new Logger({
+    enabled: [
+        "error",
+    ],
+});
+```
 
 #### Default configuration ####
 
@@ -89,21 +144,70 @@ Create an instance of the logger and export it for usage in your application:
 
 **logger.js**
 
-<div style="text-align:center"><img src ="./assets/nodejs-usage-1.png" style="max-width:800px"/></div>
+```js
+const Logger = require("@studiohyperdrive/logger");
+
+const logger = new Logger();
+
+module.exports = logger;
+```
 
 **app.js**
 
-<div style="text-align:center"><img src ="./assets/nodejs-usage-2.png" style="max-width:800px"/></div>
+```js
+const logger = require("./logger");
+
+logger.debug("some debug message", { key: "value" });
+logger.info("some info message", { key: "value" });
+logger.cron("some cron message", { key: "value" });
+logger.db("some db message", { key: "value" });
+logger.success("some success message", { key: "value" });
+logger.warn("some warn message", { key: "value" });
+logger.error("some error message", { key: "value" });
+```
 
 **Output**
 
-<div style="text-align:center"><img src ="./assets/nodejs-usage-3.png" style="max-width:800px;border-radius:10px"/></div>
+<p align="center">
+    <img src ="./assets/nodejs-output.png" style="max-width:800px;border-radius:10px"/>
+</p>
+
+### Overloads ###
+
+As documented in the [typings](./typings.ts), each method has several overloads:
+
+```js
+logger.info("some info message", { key: "value" }); // Message and object
+logger.info("some info message"); // Message
+logger.info({ key: "value" }); // Object
+logger.info("some info message", { key: "value" }, true); // Force a log when loglevel is disabled
+```
 
 ### Configuration ###
 
 When creating an instance of the `Logger` class configuration can be provided by passing an options object to the constructor.
 
-<div style="text-align:center"><img src ="./assets/nodejs-configuration-1.png" style="max-width:800px"/></div>
+```js
+const Logger = require("@studiohyperdrive/logger");
+
+const logger = new Logger({
+    enabled: [
+        "error",
+    ],
+    filesystem: {
+        enabled: true,
+        path: "logs",
+    },
+    slack: {
+        enabled: true,
+        token: "token",
+        app: "my-app",
+        channel: "my-channel",
+    },
+});
+
+module.exports = logger;
+```
 
 #### Default configuration ####
 
@@ -149,6 +253,35 @@ The default configuration is the following:
 
 ### Slack ###
 
+The Node.js bundle of this package provides the possibility to send alerts through Slack for error messages. This can be done by adding an app to your workspace which enables a bot user.
+
+Steps to follow:
+1. Create an app for your workspace at [https://api.slack.com/apps](https://api.slack.com/apps)
+2. Add a bot user at https://api.slack.com/apps/`[YOUR APP ID]`/bots
+3. Install your app for your workspace at https://api.slack.com/apps/`[YOUR APP ID]`/install-on-team
+4. Save the provided `Bot User OAuth Access Token`.
+
+**Configuration**
+
+To enable alerts to Slack, use the following configuration for your `Logger` instance.
+
+```js
+{
+    slack: {
+        enabled: true,
+        token: "token", // The Bot User OAuth Access Token from the steps above
+        channel: "general",
+        app: "app"
+    }
+}
+```
+
+**Output**
+
+<p align="center">
+    <img src ="./assets/slack-output.png" style="max-width:800px;border-radius:10px"/>
+</p>
+
 ## Roadmap ##
 
 We are continuously looking to improve this package. If you have any feedback or ideas, please let us know.
@@ -169,4 +302,4 @@ Feel free to provide feedback, open issues or create pull-requests to this repos
 
 ## About us ##
 
-[Studio Hyperdrive](https://www.studiohyperdrive.be/) is an experienced digital development studio focussed on all things JavaScript. Already 18 strong. Based in Antwerp & Ghent! With a handpicked set of skills we build anything from websites to chatbots and immersive cross reality experiences.
+[Studio Hyperdrive](https://www.studiohyperdrive.be/) is an experienced digital development studio focussed on all things JavaScript. Already 18 strong. Based in Antwerp & Ghent! With a handpicked set of skills we build anything from websites to chatbots and immersive cross reality experiences. Feel free to contact us through our website.

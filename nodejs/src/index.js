@@ -117,12 +117,16 @@ export default class Logger {
 	 * @param {string} level
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	log(level, msg, obj) {
-		if (this.options.enabled.includes(level)) {
+	log(level, msg, obj, force = false) {
+		if (this.options.enabled.includes(level) || force) {
 			if (!obj && typeof msg === "object") {
 				obj = msg;
 				msg = "";
+			}
+			if (level === "error" && typeof obj === "string") {
+				obj = new Error(obj);
 			}
 
 			this.winston.log(level, msg, { object: obj, timestamp: new Date().toISOString() });
@@ -138,9 +142,10 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	debug(msg, obj) {
-		this.log("debug", msg, obj);
+	debug(msg, obj, force) {
+		this.log("debug", msg, obj, force);
 	}
 
 	/**
@@ -148,9 +153,10 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	info(msg, obj) {
-		this.log("info", msg, obj);
+	info(msg, obj, force) {
+		this.log("info", msg, obj, force);
 	}
 
 	/**
@@ -158,9 +164,10 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	cron(msg, obj) {
-		this.log("cron", msg, obj);
+	cron(msg, obj, force) {
+		this.log("cron", msg, obj, force);
 	}
 
 	/**
@@ -168,9 +175,10 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	db(msg, obj) {
-		this.log("db", msg, obj);
+	db(msg, obj, force) {
+		this.log("db", msg, obj, force);
 	}
 
 	/**
@@ -178,9 +186,10 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	success(msg, obj) {
-		this.log("success", msg, obj);
+	success(msg, obj, force) {
+		this.log("success", msg, obj, force);
 	}
 
 	/**
@@ -188,9 +197,10 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	warn(msg, obj) {
-		this.log("warn", msg, obj);
+	warn(msg, obj, force) {
+		this.log("warn", msg, obj, force);
 	}
 
 	/**
@@ -198,8 +208,9 @@ export default class Logger {
 	 *
 	 * @param {string} msg
 	 * @param {object} obj
+	 * @param {boolean} force
 	 */
-	error(msg, obj) {
-		this.log("error", msg, obj);
+	error(msg, obj, force) {
+		this.log("error", msg, obj, force);
 	}
 }

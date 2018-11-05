@@ -5,7 +5,6 @@ printf "\e[94m 🚀\tBuilding @studiohyperdrive/logger\e[39m\n\n"
 printf "\e[96m 🗑\tCleaning dist folder\e[39m\n"
 rm -rf dist
 mkdir dist
-cp package.json dist/package.json
 cp typings.ts dist/shd-logger.d.ts
 printf "\n\e[92m 🎉\tDist folder has been successfully cleaned\e[39m\n\n"
 
