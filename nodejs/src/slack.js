@@ -16,7 +16,7 @@ export function emitToSlack(config, msg, obj) {
 				{
 					pretext: `*_An error occurred in ${config.app}_*:`,
 					title: msg,
-					text: obj ? `\`\`\`${JSON.stringify(obj, null, 4)}\`\`\`` : "",
+					text: obj ? `\`\`\`${obj instanceof Error ? obj.stack : JSON.stringify(obj, null, 4)}\`\`\`` : "",
 				},
 			],
 			channel: config.channel,

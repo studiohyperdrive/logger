@@ -253,6 +253,35 @@ The default configuration is the following:
 
 ### Slack ###
 
+The Node.js bundle of this package provides the possibility to send alerts through Slack for error messages. This can be done by adding an app to your workspace which enables a bot user.
+
+Steps to follow:
+1. Create an app for your workspace at [https://api.slack.com/apps](https://api.slack.com/apps)
+2. Add a bot user at https://api.slack.com/apps/`[YOUR APP ID]`/bots
+3. Install your app for your workspace at https://api.slack.com/apps/`[YOUR APP ID]`/install-on-team
+4. Save the provided `Bot User OAuth Access Token`.
+
+**Configuration**
+
+To enable alerts to Slack, use the following configuration for your `Logger` instance.
+
+```js
+{
+    slack: {
+        enabled: true,
+        token: "token", // The Bot User OAuth Access Token from the steps above
+        channel: "general",
+        app: "app"
+    }
+}
+```
+
+**Output**
+
+<p align="center">
+    <img src ="./assets/slack-output.png" style="max-width:800px;border-radius:10px"/>
+</p>
+
 ## Roadmap ##
 
 We are continuously looking to improve this package. If you have any feedback or ideas, please let us know.
