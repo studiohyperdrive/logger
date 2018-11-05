@@ -12,7 +12,29 @@
     <br>
     <sub>Supports browser console and Node.js, only 3kB, configurable and MIT licensed</sub>
 </p>
-<hr>
+
+---
+
+## Table of Contents ##
+
+* [Installation](#installation)
+* [Browser](#browser)
+  * [Usage](#usage)
+  * [Overloads](#overloads)
+  * [Configuration](#configuration)
+    * [Default configuration](#default-configuration)
+* [Node\.js](#nodejs)
+  * [Usage](#usage-1)
+  * [Overloads](#overloads-1)
+  * [Configuration](#configuration-1)
+    * [Default configuration](#default-configuration-1)
+  * [Slack](#slack)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [About us](#about-us)
+
+---
 
 **@studiohyperdrive/logger** is a logging library that supports both the browser and Node.js by exporting different bundles for both targets.
 
@@ -63,7 +85,6 @@ logger.error("some error message", { key: "value" });
 <p align="center">
     <img src ="./assets/browser-output.png" style="max-width:800px;border-radius:10px"/>
 </p>
-<br>
 
 ### Overloads ###
 
@@ -73,7 +94,7 @@ As documented in the [typings](./typings.ts), each method has several overloads:
 logger.info("some info message", { key: "value" }); // Message and object
 logger.info("some info message"); // Message
 logger.info({ key: "value" }); // Object
-logger.info("some info message", { key: "value" }, true); // Force the log, although the loglevel is not enabled
+logger.info("some info message", { key: "value" }, true); // Force a log when loglevel is disabled
 ```
 
 ### Configuration ###
@@ -150,7 +171,6 @@ logger.error("some error message", { key: "value" });
 <p align="center">
     <img src ="./assets/nodejs-output.png" style="max-width:800px;border-radius:10px"/>
 </p>
-<br>
 
 ### Overloads ###
 
@@ -160,7 +180,7 @@ As documented in the [typings](./typings.ts), each method has several overloads:
 logger.info("some info message", { key: "value" }); // Message and object
 logger.info("some info message"); // Message
 logger.info({ key: "value" }); // Object
-logger.info("some info message", { key: "value" }, true); // Force the log, although the loglevel is not enabled
+logger.info("some info message", { key: "value" }, true); // Force a log when loglevel is disabled
 ```
 
 ### Configuration ###
