@@ -83,12 +83,12 @@ logger.error("some error message", { key: "value" });
 **Output**
 
 <p align="center">
-    <img src ="./assets/browser-output.png" style="max-width:800px;border-radius:10px"/>
+    <img src ="https://github.com/studiohyperdrive/logger/blob/master/assets/browser-output.png" style="max-width:800px;border-radius:10px"/>
 </p>
 
 ### Overloads ###
 
-As documented in the [typings](./typings.ts), each method has several overloads:
+As documented in the [typings](https://github.com/studiohyperdrive/logger/blob/master/typings.ts), each method has several overloads:
 
 ```js
 logger.info("some info message", { key: "value" }); // Message and object
@@ -169,12 +169,12 @@ logger.error("some error message", { key: "value" });
 **Output**
 
 <p align="center">
-    <img src ="./assets/nodejs-output.png" style="max-width:800px;border-radius:10px"/>
+    <img src ="https://github.com/studiohyperdrive/logger/blob/master/assets/nodejs-output.png" style="max-width:800px;border-radius:10px"/>
 </p>
 
 ### Overloads ###
 
-As documented in the [typings](./typings.ts), each method has several overloads:
+As documented in the [typings](https://github.com/studiohyperdrive/logger/blob/master/typings.ts), each method has several overloads:
 
 ```js
 logger.info("some info message", { key: "value" }); // Message and object
@@ -243,10 +243,10 @@ The default configuration is the following:
         uppercaseLabel: true
     },
     slack: {
-        app: "", // Name for the current application
-        channel: "", // Slack channel to post the messages in (without the #)
         enabled: false, // Enable alerts to Slack for error logs
-        token: "" // Slack bot user token
+        token: "", // Slack bot user token
+        app: "", // Name for the current application
+        channel: "" // Slack channel to post the messages in (without the #)
     }
 }
 ```
@@ -257,8 +257,8 @@ The Node.js bundle of this package provides the possibility to send alerts throu
 
 Steps to follow:
 1. Create an app for your workspace at [https://api.slack.com/apps](https://api.slack.com/apps)
-2. Add a bot user at https://api.slack.com/apps/`[YOUR APP ID]`/bots
-3. Install your app for your workspace at https://api.slack.com/apps/`[YOUR APP ID]`/install-on-team
+2. Add a bot user at https://api.slack.com/apps/[YOUR-APP-ID]/bots
+3. Install your app for your workspace at https://api.slack.com/apps/[YOUR-APP-ID]/install-on-team
 4. Save the provided `Bot User OAuth Access Token`.
 
 **Configuration**
@@ -298,7 +298,7 @@ Feel free to provide feedback, open issues or create pull-requests to this repos
 
 ## License ##
 
-**@studiohyperdrive/logger** is [MIT licensed](./LICENSE) by [Studio Hyperdrive](https://www.studiohyperdrive.be/).
+**@studiohyperdrive/logger** is [MIT licensed](https://github.com/studiohyperdrive/logger/blob/master/LICENSE) by [Studio Hyperdrive](https://www.studiohyperdrive.be/).
 
 ## About us ##
 
