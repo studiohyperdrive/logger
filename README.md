@@ -282,13 +282,16 @@ To enable alerts to Slack, use the following configuration for your `Logger` ins
     <img src ="./assets/slack-output.png" style="max-width:800px;border-radius:10px"/>
 </p>
 
+## Snippets ##
+
+Snippets for JavaScript and TypeScript can be found in the [snippets folder](https://github.com/studiohyperdrive/logger/tree/master/snippets).
+
 ## Roadmap ##
 
 We are continuously looking to improve this package. If you have any feedback or ideas, please let us know.
 
 The roadmap as is today:
 
-* Snippets
 * Add support for custom, configurable types
 * ...
 

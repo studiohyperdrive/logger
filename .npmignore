@@ -3,6 +3,7 @@ browser
 cli
 nodejs
 scripts
+snippets
 
 .babelrc
 .editorconfig
