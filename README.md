@@ -29,6 +29,7 @@
   * [Configuration](#configuration-1)
     * [Default configuration](#default-configuration-1)
   * [Slack](#slack)
+* [Snippets](#snippets)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
