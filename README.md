@@ -15,6 +15,8 @@
 
 ---
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/studiohyperdrive/logger.svg)](https://greenkeeper.io/)
+
 ## Table of Contents ##
 
 * [Installation](#installation)
