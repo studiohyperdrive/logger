@@ -26,4 +26,5 @@ export const config = {
 		underlineSuffix: false,
 		uppercaseLabel: true,
 	},
+	timestamp: true,
 };

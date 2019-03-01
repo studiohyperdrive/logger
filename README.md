@@ -222,20 +222,7 @@ The default configuration is the following:
         enabled: true, // Enable logging to filesystem
         path: "logs" // Path for the filesystem logs (from root)
     },
-    signale: { // Signale options (https://github.com/klauscfhq/signale#configuration)
-        coloredInterpolation: false,
-        displayScope: true,
-        displayBadge: true,
-        displayDate: true,
-        displayFilename: false,
-        displayLabel: true,
-        displayTimestamp: true,
-        underlineLabel: true,
-        underlineMessage: false,
-        underlinePrefix: false,
-        underlineSuffix: false,
-        uppercaseLabel: true
-    }
+    timestamp: true,
 }
 ```
 

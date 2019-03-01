@@ -108,6 +108,8 @@ export default class Logger {
 			...config,
 			...options,
 		};
+		this.options.signale.displayDate = this.options.timestamp;
+		this.options.signale.displayTimestamp = this.options.timestamp;
 	}
 
 	/**

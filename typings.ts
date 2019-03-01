@@ -5,27 +5,12 @@ export interface BrowserOptions {
 export interface NodejsOptions {
 	enabled?: string[];
 	filesystem?: FilesystemOptions;
-	signale?: SignaleOptions;
+	timestamp?: boolean
 }
 
 export interface FilesystemOptions {
 	enabled: boolean;
 	path: string;
-}
-
-export interface SignaleOptions {
-	coloredInterpolation?: boolean;
-	displayScope?: boolean;
-	displayBadge?: boolean;
-	displayDate?: boolean;
-	displayFilename?: boolean;
-	displayLabel?: boolean;
-	displayTimestamp?: boolean;
-	underlineLabel?: boolean;
-	underlineMessage?: boolean;
-	underlinePrefix?: boolean;
-	underlineSuffix?: boolean;
-	uppercaseLabel?: boolean;
 }
 
 export declare class Logger {
