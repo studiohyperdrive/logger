@@ -26,10 +26,4 @@ export const config = {
 		underlineSuffix: false,
 		uppercaseLabel: true,
 	},
-	slack: {
-		app: "",
-		channel: "",
-		enabled: false,
-		token: "",
-	},
 };

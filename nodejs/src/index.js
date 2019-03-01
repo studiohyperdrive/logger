@@ -1,7 +1,6 @@
 import { config } from "./config";
 import { createLogger, transports } from "winston";
 import "winston-daily-rotate-file";
-import { emitToSlack } from "./slack";
 import { Signale } from "signale";
 import { SignaleTransport } from "./signale";
 
@@ -130,10 +129,6 @@ export default class Logger {
 			}
 
 			this.winston.log(level, msg, { object: obj, timestamp: new Date().toISOString() });
-
-			if (level === "error" && this.options.slack.enabled) {
-				emitToSlack(this.options.slack, msg, obj);
-			}
 		}
 	}
 

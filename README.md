@@ -137,7 +137,6 @@ _Other features_:
     * all
     * warn
     * error
-- Sending alerts to Slack for error logs
 
 ### Usage ###
 
@@ -199,12 +198,6 @@ const logger = new Logger({
         enabled: true,
         path: "logs",
     },
-    slack: {
-        enabled: true,
-        token: "token",
-        app: "my-app",
-        channel: "my-channel",
-    },
 });
 
 module.exports = logger;
@@ -242,46 +235,9 @@ The default configuration is the following:
         underlinePrefix: false,
         underlineSuffix: false,
         uppercaseLabel: true
-    },
-    slack: {
-        enabled: false, // Enable alerts to Slack for error logs
-        token: "", // Slack bot user token
-        app: "", // Name for the current application
-        channel: "" // Slack channel to post the messages in (without the #)
     }
 }
 ```
-
-### Slack ###
-
-The Node.js bundle of this package provides the possibility to send alerts through Slack for error messages. This can be done by adding an app to your workspace which enables a bot user.
-
-Steps to follow:
-1. Create an app for your workspace at [https://api.slack.com/apps](https://api.slack.com/apps)
-2. Add a bot user at https://api.slack.com/apps/[YOUR-APP-ID]/bots
-3. Install your app for your workspace at https://api.slack.com/apps/[YOUR-APP-ID]/install-on-team
-4. Save the provided `Bot User OAuth Access Token`.
-
-**Configuration**
-
-To enable alerts to Slack, use the following configuration for your `Logger` instance.
-
-```js
-{
-    slack: {
-        enabled: true,
-        token: "token", // The Bot User OAuth Access Token from the steps above
-        channel: "general",
-        app: "app"
-    }
-}
-```
-
-**Output**
-
-<p align="center">
-    <img src ="./assets/slack-output.png" style="max-width:800px;border-radius:10px"/>
-</p>
 
 ## Snippets ##
 
@@ -293,7 +249,6 @@ We are continuously looking to improve this package. If you have any feedback or
 
 The roadmap as is today:
 
-* Add support for custom, configurable types
 * ...
 
 ## Contributing

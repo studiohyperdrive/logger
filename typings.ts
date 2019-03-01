@@ -6,7 +6,6 @@ export interface NodejsOptions {
 	enabled?: string[];
 	filesystem?: FilesystemOptions;
 	signale?: SignaleOptions;
-	slack?: SlackOptions;
 }
 
 export interface FilesystemOptions {
@@ -27,13 +26,6 @@ export interface SignaleOptions {
 	underlinePrefix?: boolean;
 	underlineSuffix?: boolean;
 	uppercaseLabel?: boolean;
-}
-
-export interface SlackOptions {
-	app: string;
-	channel: string;
-	enabled: boolean;
-	token: string;
 }
 
 export declare class Logger {
