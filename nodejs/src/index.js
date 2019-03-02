@@ -1,8 +1,17 @@
 import { config } from "./config";
 import { createLogger, transports } from "winston";
 import "winston-daily-rotate-file";
+import dateFormat from "dateformat";
 import { Signale } from "signale";
 import { SignaleTransport } from "./signale";
+
+// Overwrite prototypes to provide consistent date for browser and Node.js
+Date.prototype.toLocaleDateString = () => {
+	return dateFormat(new Date(), "yyyy-m-d");
+};
+Date.prototype.toLocaleTimeString = () => {
+	return dateFormat(new Date(), "HH:MM:ss");
+};
 
 const filesystemTransports = (path) => {
 	return [

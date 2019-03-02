@@ -21,6 +21,7 @@
   "license": "ISC",
   "homepage": "https://github.com/studiohyperdrive/logger",
   "dependencies": {
+    "dateformat": "3.0.3",
     "request": "2.88.0",
     "request-promise": "4.2.4",
     "signale": "1.4.0",
