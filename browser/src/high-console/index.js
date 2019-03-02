@@ -1,95 +1,57 @@
 import { config } from "./config";
 import dateFormat from "dateformat";
 
-export function debug() {
-	const {
-		message,
-		data,
-		timestamp,
-	} = getMessageAndData(arguments);
-
-	print("debug", message, data, timestamp);
+export function debug(options) {
+	print("debug", options.msg, options.obj, options.timestamp);
 }
 
-export function error() {
-	const {
-		message,
-		data,
-		timestamp,
-	} = getMessageAndData(arguments);
-
-	print("error", message, data, timestamp);
+export function error(options) {
+	print("error", options.msg, options.obj, options.timestamp);
 }
 
-export function info() {
-	const {
-		message,
-		data,
-		timestamp,
-	} = getMessageAndData(arguments);
-
-	print("info", message, data, timestamp);
+export function info(options) {
+	print("info", options.msg, options.obj, options.timestamp);
 }
 
-export function success() {
-	const {
-		message,
-		data,
-		timestamp,
-	} = getMessageAndData(arguments);
-
-	print("success", message, data, timestamp);
+export function success(options) {
+	print("success", options.msg, options.obj, options.timestamp);
 }
 
-export function warn() {
-	const {
-		message,
-		data,
-		timestamp,
-	} = getMessageAndData(arguments);
-
-	print("warn", message, data, timestamp);
+export function warn(options) {
+	print("warn", options.msg, options.obj, options.timestamp);
 }
 
-function getMessageAndData() {
-	let message = "";
-	let data;
-	let timestamp = true;
-
-	[].slice.call(arguments[0], 0).forEach((element) => {
-		if (typeof element === "string") {
-			message = element;
-		}
-		if (typeof element === "object") {
-			data = element;
-		}
-		if (typeof element === "boolean") {
-			timestamp = element;
-		}
-	});
-
-	return {
-		message,
-		data,
-		timestamp,
-	};
-}
-
-function print(type, message, data, timestamp) {
-	if (data) {
+function print(type, msg, obj, timestamp) {
+	if (obj && obj instanceof Error) {
 		console[config.methods[type]]( // eslint-disable-line no-console
 			`%c%s%c%s %c%s\n%o\n`,
 			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
 			generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`,
-			generateStyle(config.themes.black), message,
-			data
+			generateStyle(config.themes.black), `${obj.message}${msg ? ` (${msg})` : ""}`,
+			obj
+		);
+	} else if (obj && typeof obj === "object") {
+		console[config.methods[type]]( // eslint-disable-line no-console
+			`%c%s%c%s %c%s\n%o\n`,
+			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
+			generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`,
+			generateStyle(config.themes.black), msg,
+			obj
+		);
+	} else if (obj && typeof obj !== "object") {
+		console[config.methods[type]]( // eslint-disable-line no-console
+			`%c%s%c%s %c%s: %o\n`,
+			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
+			generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`,
+			generateStyle(config.themes.black), msg,
+			obj
 		);
 	} else {
 		console[config.methods[type]]( // eslint-disable-line no-console
 			`%c%s%c%s %c%s\n`,
 			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
 			generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`,
-			generateStyle(config.themes.black), message
+			generateStyle(config.themes.black), msg
 		);
 	}
 }

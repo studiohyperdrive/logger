@@ -38,7 +38,7 @@ export class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	log(level, msg, obj, force) {
+	log(level, msg, obj, force = false) {
 		if (this.options.enabled.includes(level) || force) {
 			if (!obj && typeof msg === "object") {
 				obj = msg;
@@ -48,7 +48,7 @@ export class Logger {
 				obj = new Error(obj);
 			}
 
-			methods[level](msg, obj, this.options.timestamp);
+			methods[level]({ msg, obj, timestamp: this.options.timestamp });
 		}
 	}
 
@@ -59,7 +59,7 @@ export class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	debug(msg, obj, force) {
+	debug(msg, obj, force = false) {
 		this.log("debug", msg, obj, force);
 	}
 
@@ -70,7 +70,7 @@ export class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	info(msg, obj, force) {
+	info(msg, obj, force = false) {
 		this.log("info", msg, obj, force);
 	}
 
@@ -81,7 +81,7 @@ export class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	success(msg, obj, force) {
+	success(msg, obj, force = false) {
 		this.log("success", msg, obj, force);
 	}
 
@@ -92,7 +92,7 @@ export class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	warn(msg, obj, force) {
+	warn(msg, obj, force = false) {
 		this.log("warn", msg, obj, force);
 	}
 
@@ -104,7 +104,7 @@ export class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	error(msg, obj, force) {
+	error(msg, obj, force = false) {
 		this.log("error", msg, obj, force);
 	}
 }

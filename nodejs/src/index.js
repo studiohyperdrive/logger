@@ -150,7 +150,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	debug(msg, obj, force) {
+	debug(msg, obj, force = false) {
 		this.log("debug", msg, obj, force);
 	}
 
@@ -161,7 +161,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	info(msg, obj, force) {
+	info(msg, obj, force = false) {
 		this.log("info", msg, obj, force);
 	}
 
@@ -172,7 +172,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	cron(msg, obj, force) {
+	cron(msg, obj, force = false) {
 		this.log("cron", msg, obj, force);
 	}
 
@@ -183,7 +183,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	db(msg, obj, force) {
+	db(msg, obj, force = false) {
 		this.log("db", msg, obj, force);
 	}
 
@@ -194,7 +194,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	success(msg, obj, force) {
+	success(msg, obj, force = false) {
 		this.log("success", msg, obj, force);
 	}
 
@@ -205,7 +205,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	warn(msg, obj, force) {
+	warn(msg, obj, force = false) {
 		this.log("warn", msg, obj, force);
 	}
 
@@ -216,7 +216,7 @@ export default class Logger {
 	 * @param {object} obj
 	 * @param {boolean} force
 	 */
-	error(msg, obj, force) {
+	error(msg, obj, force = false) {
 		this.log("error", msg, obj, force);
 	}
 }
