@@ -124,7 +124,8 @@ The default configuration is the following:
         "success",
         "warn",
         "error"
-    ]
+    ],
+    timestamp: true
 }
 ```
 

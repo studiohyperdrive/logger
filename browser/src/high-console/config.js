@@ -12,6 +12,11 @@ export const config = {
 			fontSize: "13px",
 			fontWeight: "normal",
 		},
+		timestamp: {
+			color: "#666",
+			fontSize: "13px",
+			fontWeight: "normal",
+		},
 		debug: {
 			color: "#000",
 			fontSize: "13px",

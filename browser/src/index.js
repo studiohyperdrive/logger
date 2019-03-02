@@ -48,7 +48,7 @@ export class Logger {
 				obj = new Error(obj);
 			}
 
-			methods[level](msg, obj);
+			methods[level](msg, obj, this.options.timestamp);
 		}
 	}
 

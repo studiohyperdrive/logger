@@ -1,53 +1,60 @@
 import { config } from "./config";
+import dateFormat from "dateformat";
 
 export function debug() {
 	const {
 		message,
 		data,
+		timestamp,
 	} = getMessageAndData(arguments);
 
-	print("debug", message, data);
+	print("debug", message, data, timestamp);
 }
 
 export function error() {
 	const {
 		message,
 		data,
+		timestamp,
 	} = getMessageAndData(arguments);
 
-	print("error", message, data);
+	print("error", message, data, timestamp);
 }
 
 export function info() {
 	const {
 		message,
 		data,
+		timestamp,
 	} = getMessageAndData(arguments);
 
-	print("info", message, data);
+	print("info", message, data, timestamp);
 }
 
 export function success() {
 	const {
 		message,
 		data,
+		timestamp,
 	} = getMessageAndData(arguments);
 
-	print("success", message, data);
+	print("success", message, data, timestamp);
 }
 
 export function warn() {
 	const {
 		message,
 		data,
+		timestamp,
 	} = getMessageAndData(arguments);
 
-	print("warn", message, data);
+	print("warn", message, data, timestamp);
 }
 
 function getMessageAndData() {
 	let message = "";
 	let data;
+	let timestamp = true;
 
 	[].slice.call(arguments[0], 0).forEach((element) => {
 		if (typeof element === "string") {
@@ -56,20 +63,43 @@ function getMessageAndData() {
 		if (typeof element === "object") {
 			data = element;
 		}
+		if (typeof element === "boolean") {
+			timestamp = element;
+		}
 	});
 
 	return {
 		message,
 		data,
+		timestamp,
 	};
 }
 
-function print(type, message, data) {
+function print(type, message, data, timestamp) {
 	if (data) {
-		console[config.methods[type]](`%c%s %c%s\n%o\n`, generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`, generateStyle(config.themes.black), message, data); // eslint-disable-line no-console
+		console[config.methods[type]]( // eslint-disable-line no-console
+			`%c%s%c%s %c%s\n%o\n`,
+			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
+			generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`,
+			generateStyle(config.themes.black), message,
+			data
+		);
 	} else {
-		console[config.methods[type]](`%c%s %c%s\n`, generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`, generateStyle(config.themes.black), message); // eslint-disable-line no-console
+		console[config.methods[type]]( // eslint-disable-line no-console
+			`%c%s%c%s %c%s\n`,
+			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
+			generateStyle(config.themes[type]), `● ${type.toUpperCase()}:`,
+			generateStyle(config.themes.black), message
+		);
 	}
+}
+
+function generateTimestamp(timestamp) {
+	if (!timestamp) {
+		return "";
+	}
+
+	return dateFormat(new Date(), "[yyyy-m-d] [HH:MM:ss] › ");
 }
 
 function generateStyle(theme) {

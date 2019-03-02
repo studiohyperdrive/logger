@@ -14,6 +14,7 @@ export const config = {
 		"success",
 		"warn",
 	],
+	timestamp: true,
 };
 
 export const methods = {

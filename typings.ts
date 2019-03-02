@@ -1,5 +1,6 @@
 export interface BrowserOptions {
 	enabled?: string[];
+	timestamp?: boolean;
 }
 
 export interface NodejsOptions {
