@@ -2,49 +2,49 @@
 	"logger.debug": {
 		"prefix": "ldebug",
 		"body": [
-			"logger.debug(\"${1:msg}\", ${2:obj});$4"
+			"logger.debug('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger debug message"
 	},
 	"logger.info": {
 		"prefix": "linfo",
 		"body": [
-			"logger.info(\"${1:msg}\", ${2:obj});$4"
+			"logger.info('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger info message"
 	},
 	"logger.cron": {
 		"prefix": "lcron",
 		"body": [
-			"logger.cron(\"${1:msg}\", ${2:obj});$4"
+			"logger.cron('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger cron message"
 	},
 	"logger.db": {
 		"prefix": "ldb",
 		"body": [
-			"logger.db(\"${1:msg}\", ${2:obj});$4"
+			"logger.db('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger db message"
 	},
 	"logger.success": {
 		"prefix": "lsuccess",
 		"body": [
-			"logger.success(\"${1:msg}\", ${2:obj});$4"
+			"logger.success('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger success message"
 	},
 	"logger.warn": {
 		"prefix": "lwarn",
 		"body": [
-			"logger.warn(\"${1:msg}\", ${2:obj});$4"
+			"logger.warn('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger warn message"
 	},
 	"logger.error": {
 		"prefix": "lerror",
 		"body": [
-			"logger.error(\"${1:msg}\", ${2:obj});$4"
+			"logger.error('${1:msg}', ${2:obj});$4"
 		],
 		"description": "@studiohyperdrive/logger error message"
 	}
