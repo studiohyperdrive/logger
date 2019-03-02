@@ -10,7 +10,7 @@
 <p align="center">
     <b>One logger to rule them all&nbsp;&nbsp;🚀</b>
     <br>
-    <sub>Supports browser console and Node.js, only 3kB, configurable and MIT licensed</sub>
+    <sub>Supports browser console and Node.js, configurable and MIT licensed</sub>
 </p>
 
 ---
