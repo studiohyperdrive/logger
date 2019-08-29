@@ -11,7 +11,7 @@ export interface NodejsOptions {
 
 export interface FilesystemOptions {
 	enabled: boolean;
-	path: string;
+	path?: string;
 }
 
 export declare class Logger {
