@@ -15,8 +15,6 @@ module.exports = {
 		format: "cjs",
 	},
 	external: [
-		"request",
-		"request-promise",
 		"signale",
 		"winston",
 		"winston-daily-rotate-file",
