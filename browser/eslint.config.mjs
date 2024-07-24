@@ -21,6 +21,7 @@ export default [{
 	languageOptions: {
 		globals: {
 			...globals.browser,
+			...globals.node,
 			...Object.fromEntries(Object.entries(globals.commonjs).map(([key]) => [key, "off"])),
 
 			...Object.fromEntries(
