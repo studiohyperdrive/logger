@@ -23,6 +23,7 @@ export function warn(options) {
 
 function print(type, msg, obj, timestamp) {
 	if (obj && obj instanceof Error) {
+		// eslint-disable-next-line no-undef
 		console[config.methods[type]]( // eslint-disable-line no-console
 			`%c%s%c%s %c%s\n%o\n`,
 			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
@@ -31,6 +32,7 @@ function print(type, msg, obj, timestamp) {
 			obj
 		);
 	} else if (obj && typeof obj === "object") {
+		// eslint-disable-next-line no-undef
 		console[config.methods[type]]( // eslint-disable-line no-console
 			`%c%s%c%s %c%s\n%o\n`,
 			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
@@ -39,6 +41,7 @@ function print(type, msg, obj, timestamp) {
 			obj
 		);
 	} else if (obj && typeof obj !== "object") {
+		// eslint-disable-next-line no-undef
 		console[config.methods[type]]( // eslint-disable-line no-console
 			`%c%s%c%s %c%s: %o\n`,
 			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),
@@ -47,6 +50,7 @@ function print(type, msg, obj, timestamp) {
 			obj
 		);
 	} else {
+		// eslint-disable-next-line no-undef
 		console[config.methods[type]]( // eslint-disable-line no-console
 			`%c%s%c%s %c%s\n`,
 			generateStyle(config.themes.timestamp), generateTimestamp(timestamp),

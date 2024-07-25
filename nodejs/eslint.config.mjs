@@ -14,12 +14,13 @@ const compat = new FlatCompat({
 });
 
 export default [{
-	ignores: ["**/dist/**/*", "**/coverage/**/*", "**/node_modules/**/*"],
+	ignores: ["**/dist/**/*", "**/coverage/**/*", "**/node_modules/**/*", "node_modules"],
 }, ...compat.extends("eslint:recommended"), {
 	plugins: {},
 
 	languageOptions: {
 		globals: {
+			...globals.browser,
 			...globals.node,
 			...Object.fromEntries(Object.entries(globals.commonjs).map(([key]) => [key, "off"])),
 

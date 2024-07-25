@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-undef
 const logger = require("./logger").logger;
+// eslint-disable-next-line no-undef
 const productionLogger = require("./logger").productionLogger;
 
 logger.debug("some debug message", { key: "value" });
