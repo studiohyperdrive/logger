@@ -1,13 +1,23 @@
+// eslint-disable-next-line no-undef
 const babel = require("rollup-plugin-babel");
+// eslint-disable-next-line no-undef
 const builtins = require("rollup-plugin-node-builtins");
+// eslint-disable-next-line no-undef
 const commonjs = require("rollup-plugin-commonjs");
+// eslint-disable-next-line no-undef
 const conditional = require("rollup-plugin-conditional");
+// eslint-disable-next-line no-undef
 const globals = require("rollup-plugin-node-globals");
+// eslint-disable-next-line no-undef
 const json = require("rollup-plugin-json");
+// eslint-disable-next-line no-undef
 const resolve = require("rollup-plugin-node-resolve");
+// eslint-disable-next-line no-undef
 const size = require("rollup-plugin-bundle-size");
+// eslint-disable-next-line no-undef
 const uglify = require("rollup-plugin-uglify");
 
+// eslint-disable-next-line no-undef
 module.exports = {
 	input: "src/index.js",
 	output: {
@@ -52,6 +62,7 @@ module.exports = {
 				"transform-object-rest-spread",
 			],
 		}),
+		// eslint-disable-next-line no-undef
 		conditional(process.env.NODE_ENV === "production", [
 			uglify({
 				compress: {
