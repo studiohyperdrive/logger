@@ -9,7 +9,8 @@
   "scripts": {
     "start": "npm i && npm run build",
     "build": "NODE_ENV=production ./scripts/build.sh",
-    "release": "npm run build && ./scripts/release.sh"
+    "release": "npm run build && ./scripts/release.sh",
+    "lint": "eslint . -c eslint.config.mjs"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,8 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
-    "eslint": "9.7.0",
+    "eslint": "9.25.1",
+    "globals": "15.11.0",
     "rollup": "0.68.2",
     "rollup-plugin-babel": "3.0.7",
     "rollup-plugin-bundle-size": "1.0.3",
