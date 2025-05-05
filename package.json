@@ -1,6 +1,6 @@
 {
   "name": "@studiohyperdrive/logger",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "SHD logging module: an abstraction on console.log for both frontend as backend (Node.js).",
   "main": "dist/shd-logger.cjs.js",
   "module": "dist/shd-logger.esm.js",
