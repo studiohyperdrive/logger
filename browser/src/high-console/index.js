@@ -1,5 +1,11 @@
 import { config } from "./config";
-import dateFormat from "dateformat";
+// Using require() instead of ES6 import because dateformat is a legacy CommonJS module
+// that doesn't support ES6 exports. The package uses module.exports = dateFormat
+// which creates { [Function], masks: {...}, i18n: {...} } instead of { default: dateFormat }
+// that ES6 import expects. This causes rollup's CommonJS plugin to fail with
+// "default is not exported" error. Using require() bypasses this conversion issue.
+// eslint-disable-next-line no-undef
+const dateFormat = require("dateformat");
 
 export function debug(options) {
 	print("debug", options.msg, options.obj, options.timestamp);

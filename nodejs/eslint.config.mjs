@@ -1,5 +1,5 @@
 import globals from "globals";
-import babelParser from "babel-eslint";
+import babelParser from "@babel/eslint-parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import js from "@eslint/js";
@@ -52,15 +52,13 @@ export default [{
 		},
 
 		parser: babelParser,
-		ecmaVersion: 6,
+		ecmaVersion: 2020,
 		sourceType: "module",
 
 		parserOptions: {
-			ecmaFeatures: {
-				globalReturn: false,
-				impliedStrict: true,
-				jsx: false,
-				experimentalObjectRestSpread: true,
+			requireConfigFile: false,
+			babelOptions: {
+				presets: ["@babel/preset-env"],
 			},
 		},
 	},
