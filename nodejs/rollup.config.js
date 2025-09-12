@@ -1,21 +1,15 @@
 // eslint-disable-next-line no-undef
-const babel = require("rollup-plugin-babel");
+const babel = require("@rollup/plugin-babel");
 // eslint-disable-next-line no-undef
-const builtins = require("rollup-plugin-node-builtins");
+const commonjs = require("@rollup/plugin-commonjs");
 // eslint-disable-next-line no-undef
-const commonjs = require("rollup-plugin-commonjs");
+const json = require("@rollup/plugin-json");
 // eslint-disable-next-line no-undef
-const conditional = require("rollup-plugin-conditional");
+const resolve = require("@rollup/plugin-node-resolve");
 // eslint-disable-next-line no-undef
-const globals = require("rollup-plugin-node-globals");
+const terser = require("@rollup/plugin-terser");
 // eslint-disable-next-line no-undef
-const json = require("rollup-plugin-json");
-// eslint-disable-next-line no-undef
-const resolve = require("rollup-plugin-node-resolve");
-// eslint-disable-next-line no-undef
-const size = require("rollup-plugin-bundle-size");
-// eslint-disable-next-line no-undef
-const uglify = require("rollup-plugin-uglify");
+const { visualizer } = require("rollup-plugin-visualizer");
 
 // eslint-disable-next-line no-undef
 module.exports = {
@@ -23,6 +17,7 @@ module.exports = {
 	output: {
 		file: "../dist/shd-logger.cjs.js",
 		format: "cjs",
+		exports: "default",
 	},
 	external: [
 		"signale",
@@ -32,10 +27,8 @@ module.exports = {
 	],
 	plugins: [
 		json(),
-		globals(),
-		builtins(),
 		resolve({
-			jsnext: true,
+			exportConditions: ["node"],
 			preferBuiltins: true,
 			extensions: [
 				".js",
@@ -49,22 +42,22 @@ module.exports = {
 			],
 		}),
 		babel({
-			babelrc: false,
+			babelHelpers: "bundled",
+			exclude: "node_modules/**",
 			presets: [
 				[
-					"env", {
+					"@babel/preset-env", {
 						"modules": false,
+						"targets": {
+							"node": "14",
+						},
 					},
 				],
 			],
-			plugins: [
-				"external-helpers",
-				"transform-object-rest-spread",
-			],
 		}),
 		// eslint-disable-next-line no-undef
-		conditional(process.env.NODE_ENV === "production", [
-			uglify({
+		...(process.env.NODE_ENV === "production" ? [
+			terser({
 				compress: {
 					pure_getters: true, // eslint-disable-line camelcase
 					unsafe: true,
@@ -73,7 +66,10 @@ module.exports = {
 				},
 				mangle: false,
 			}),
-		]),
-		size(),
+		] : []),
+		visualizer({
+			filename: "../dist/bundle-analysis.html",
+			open: false,
+		}),
 	],
 };

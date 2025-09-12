@@ -1,17 +1,15 @@
 // eslint-disable-next-line no-undef
-const babel = require("rollup-plugin-babel");
+const babel = require("@rollup/plugin-babel");
 // eslint-disable-next-line no-undef
-const commonjs = require("rollup-plugin-commonjs");
+const commonjs = require("@rollup/plugin-commonjs");
 // eslint-disable-next-line no-undef
-const conditional = require("rollup-plugin-conditional");
+const json = require("@rollup/plugin-json");
 // eslint-disable-next-line no-undef
-const json = require("rollup-plugin-json");
+const resolve = require("@rollup/plugin-node-resolve");
 // eslint-disable-next-line no-undef
-const resolve = require("rollup-plugin-node-resolve");
+const terser = require("@rollup/plugin-terser");
 // eslint-disable-next-line no-undef
-const size = require("rollup-plugin-bundle-size");
-// eslint-disable-next-line no-undef
-const uglify = require("rollup-plugin-uglify");
+const { visualizer } = require("rollup-plugin-visualizer");
 
 // eslint-disable-next-line no-undef
 module.exports = {
@@ -30,9 +28,9 @@ module.exports = {
 	plugins: [
 		json(),
 		resolve({
-			jsnext: true,
+			exportConditions: ["browser"],
 			browser: true,
-			preferBuiltins: true,
+			preferBuiltins: false,
 			extensions: [
 				".js",
 				".json",
@@ -43,24 +41,25 @@ module.exports = {
 				"node_modules/**",
 				"src/**",
 			],
+			requireReturnsDefault: "auto",
 		}),
 		babel({
-			babelrc: false,
+			babelHelpers: "bundled",
+			exclude: "node_modules/**",
 			presets: [
 				[
-					"env", {
+					"@babel/preset-env", {
 						"modules": false,
+						"targets": {
+							"browsers": ["last 2 versions", "ie >= 11"],
+						},
 					},
 				],
 			],
-			plugins: [
-				"external-helpers",
-				"transform-object-rest-spread",
-			],
 		}),
 		// eslint-disable-next-line no-undef
-		conditional(process.env.NODE_ENV === "production", [
-			uglify({
+		...(process.env.NODE_ENV === "production" ? [
+			terser({
 				compress: {
 					pure_getters: true, // eslint-disable-line camelcase
 					unsafe: true,
@@ -69,7 +68,10 @@ module.exports = {
 				},
 				mangle: false,
 			}),
-		]),
-		size(),
+		] : []),
+		visualizer({
+			filename: "../dist/bundle-analysis.html",
+			open: false,
+		}),
 	],
 };
